@@ -1,0 +1,41 @@
+const panels = [];
+
+const panelSources = [
+  "https://dr.savee-cdn.com/things/6/3/8a6e255d8005068392e62c.webp",
+  "https://dr.savee-cdn.com/things/6/3/862676e5053b9bb40e20b8.webp",
+  "https://dr.savee-cdn.com/things/6/3/76bd888e74084fe0e8abf8.webp",
+  "https://dr.savee-cdn.com/things/6/3/786c78f0f6f10b38b85976.webp",
+  "https://dr.savee-cdn.com/things/6/3/8559f41ac8663e0f3d4fbd.webp",
+  "https://dr.savee-cdn.com/things/5/b/7dcdee093beb32c7727ada.webp",
+  "https://dr.savee-cdn.com/things/6/3/844a0ec5ce6b877bf023de.webp",
+  "https://dr.savee-cdn.com/things/6/3/844a11c5ce6b877bf02402.webp",
+  "https://dr.savee-cdn.com/things/6/3/838abd363c29093b13b5fd.webp",
+  "https://dr.savee-cdn.com/things/6/3/754621267164ee424ae5c4.webp",
+  "https://dr.savee-cdn.com/things/6/3/6e9e4cfa141214f426d536.webp",
+  "https://dr.savee-cdn.com/things/6/3/288c79e2b9225fe4fceb8e.webp",
+  "https://dr.savee-cdn.com/things/6/3/6aed6c4c80fe31eb12abe1.webp",
+  "https://dr.savee-cdn.com/things/6/3/4b085d14157c6cf12573c4.webp",
+  "https://dr.savee-cdn.com/things/6/3/630b7a3ecca4cbad5d79d9.webp",
+  "https://dr.savee-cdn.com/things/6/3/6007dea27e33e38cca5dc4.webp",
+  "https://dr.savee-cdn.com/things/6/3/63c5d7ddbce066f2fc7906.webp",
+  "https://dr.savee-cdn.com/things/6/3/5ebd8b2d468f4abf066f54.webp",
+  "https://dr.savee-cdn.com/things/6/3/64ec242afd831a172a6781.gif",
+];
+
+let panelSrcIdx = 0;
+const numOfPanels = 100;
+
+for (let i = 0; i <= numOfPanels; i++) {
+  let panelItem = {
+    id: "00" + i,
+    src: panelSources[panelSrcIdx],
+  };
+
+  if (panelSrcIdx === panelSources.length) panelSrcIdx = 0;
+  else {
+    panels.push(panelItem);
+    panelSrcIdx++;
+  }
+}
+
+// console.log(panels);
