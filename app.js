@@ -1,5 +1,4 @@
 // Generate Panels
-
 const panels = [];
 
 const panelSources = [
@@ -42,7 +41,6 @@ for (let i = 0; i <= panelNum; i++) {
 }
 
 // Display Panels
-
 const panelsColumnsWrapper = document.querySelector(".panels_cols-wrapper");
 
 const displayPanels = function (numOfColumns = 1) {
