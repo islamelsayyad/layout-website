@@ -4,10 +4,25 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   width: 100%;
-  font-family: "Montserrat", sans-serif;
   scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
 }
 
 .main-container {
@@ -17,9 +32,9 @@ body {
   align-items: center;
 }
 
-.nav-bar-wrapper {
+.nav-bar {
   width: 100%;
-  padding: 1.25rem 3rem;
+  padding: 1rem 3rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -30,9 +45,22 @@ body {
   background-color: #fff;
   z-index: 100;
   height: 95px;
+  border-bottom: 1px solid #000;
 }
 
-.hamburger-icon-wrapper {
+.nav-bar__logo div {
+  font-size: 2.3rem;
+
+  /* background: -webkit-linear-gradient(
+    90deg,
+    rgba(74, 0, 224, 1) 0%,
+    rgba(142, 45, 226, 1) 35%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+}
+
+.nav-bar__list-icon {
   width: 54px;
   height: 26px;
   display: flex;
@@ -42,29 +70,26 @@ body {
   cursor: pointer;
 }
 
-.hamburger-icon-wrapper .line {
+.nav-bar__list-icon .line-item {
   width: 100%;
   height: 0.085rem;
   background-color: black;
 }
 
-.layout-section-wrapper {
+.panels-wrapper {
   width: 100%;
   max-width: 1200px;
   margin: 2.75rem 0;
   position: absolute;
   overflow: hidden;
-  top: 4rem;
+  top: 6.8rem;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 10;
+  padding: 0 0.5rem;
 }
 
-h1 {
-  font-size: 2.3rem;
-}
-
-.section-cols-wrapper {
+.panels_cols-wrapper {
   display: flex;
   gap: 25px;
   width: 100%;
@@ -72,14 +97,37 @@ h1 {
   margin-bottom: 1.5rem;
 }
 
-.col-item-wrapper {
+.panel__col-item {
   display: flex;
   flex-direction: column;
   gap: 25px;
   flex: 1;
 }
 
+.panel-item {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.panel-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
 .panel-item img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: all 300ms ease-out;
+}
+
+.panel-item:hover img {
+  transform: scale(1.08);
 }
