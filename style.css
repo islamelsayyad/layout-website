@@ -34,7 +34,7 @@ a {
 
 .nav-bar {
   width: 100%;
-  padding: 1rem 3rem;
+  padding: 0.75rem 3rem;
   position: relative;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@ a {
   margin: 2.75rem 0;
   position: absolute;
   overflow: hidden;
-  top: 6.8rem;
+  top: 6rem;
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 10;
