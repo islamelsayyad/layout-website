@@ -84,4 +84,4 @@ const displayPanels = function (numOfColumns = 1) {
   createPanels();
 };
 
-displayPanels(4);
+displayPanels(3);
