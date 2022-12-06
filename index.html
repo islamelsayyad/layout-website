@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css" />
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
     </style>
 
     <script defer src="app.js"></script>
@@ -19,9 +19,33 @@
   </head>
   <body>
     <div class="main-container">
-      <nav class="nav-bar">
+      <nav class="nav-bar-wrapper">
         <div class="nav-bar__logo">
-          <img src="layout-400.png" alt="layout" />
+          <img src="layout-400.png" alt="layout-logo" />
+        </div>
+        <div class="range-slider_btn">range</div>
+        <div class="range-slider_layout">
+          <div class="range-slider-wrapper">
+            <label for="">Columns</label>
+            <input
+              class="range-slider_cols"
+              type="range"
+              min="1"
+              max="9"
+              value="3"
+            />
+          </div>
+
+          <div class="range-slider-wrapper">
+            <label for="">Gap</label>
+            <input
+              class="range-slider_gap"
+              type="range"
+              min="1"
+              max="9"
+              value="5"
+            />
+          </div>
         </div>
       </nav>
       <main class="panels-wrapper">

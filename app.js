@@ -29,7 +29,7 @@ let panelSrcIndex = 0;
 for (let i = 0; i <= panelNum; i++) {
   let panelItem = {
     id: i,
-    title: "SAVEE",
+    reference: "https://www.savee.it",
     src: panelSources[panelSrcIndex],
   };
 
@@ -40,15 +40,40 @@ for (let i = 0; i <= panelNum; i++) {
   }
 }
 
-// Display Panels
+// Append Panels
+
 const panelsColumnsWrapper = document.querySelector(".panels_cols-wrapper");
 
-const displayPanels = function (numOfColumns = 1) {
+const createPanels = function (columnsNum, gap, columns) {
+  for (let i = 1; i <= columnsNum; i++) {
+    const panelColItem = document.createElement("div");
+    panelColItem.classList.add("panel__col-item");
+    panelColItem.dataset.key = i;
+    panelsColumnsWrapper.appendChild(panelColItem);
+
+    panelColItem.style.gap = `${gap * 5}px`;
+
+    const column = columns[`col${[i]}`];
+    column.forEach((panel) => {
+      const panelItem = document.createElement("div");
+      panelItem.classList.add("panel-item");
+      panelColItem.appendChild(panelItem);
+
+      const panelImg = document.createElement("img");
+      panelImg.src = panel.src;
+      panelItem.append(panelImg);
+    });
+  }
+
+  panelsColumnsWrapper.style.gap = `${gap * 5}px`;
+};
+
+const displayPanels = function (columnsNum = 3, gap = 5) {
   const columns = {};
 
   panelsColumnsWrapper.innerHTML = "";
 
-  for (let i = 1; i <= numOfColumns; i++) {
+  for (let i = 1; i <= columnsNum; i++) {
     columns[`col${[i]}`] = [];
   }
 
@@ -58,30 +83,33 @@ const displayPanels = function (numOfColumns = 1) {
     const colItem = columns[`col${[colNum]}`];
     colItem.push(panels[i]);
 
-    if (colNum >= numOfColumns) colNum = 1;
+    if (colNum >= columnsNum) colNum = 1;
     else colNum++;
   }
 
-  const createPanels = function () {
-    for (let i = 1; i <= numOfColumns; i++) {
-      const panelColItem = document.createElement("div");
-      panelColItem.classList.add("panel__col-item");
-      panelColItem.dataset.key = i;
-      panelsColumnsWrapper.appendChild(panelColItem);
-
-      const column = columns[`col${[i]}`];
-      column.forEach((panel) => {
-        const panelItem = document.createElement("div");
-        panelItem.classList.add("panel-item");
-        panelColItem.appendChild(panelItem);
-
-        const panelImg = document.createElement("img");
-        panelImg.src = panel.src;
-        panelItem.append(panelImg);
-      });
-    }
-  };
-  createPanels();
+  createPanels(columnsNum, gap, columns);
 };
 
-displayPanels(3);
+// Resizing Layout
+const rangeSliderBtn = document.querySelector(".range-slider_btn");
+const panelsWrapper = document.querySelector(".panels-wrapper");
+const rangeSliderLayout = document.querySelector(".range-slider_layout");
+const rangeColumns = document.querySelector(".range-slider_cols");
+const rangeGap = document.querySelector(".range-slider_gap");
+
+displayPanels(rangeColumns.defaultValue, rangeGap.defaultValue);
+
+rangeSliderBtn.addEventListener("click", () => {
+  rangeSliderLayout.classList.toggle("range-slider__visible");
+});
+
+panelsWrapper.addEventListener("mousemove", () => {
+  rangeSliderLayout.classList.remove("range-slider__visible");
+});
+
+rangeSliderLayout.addEventListener("input", (e) => {
+  const target = e.target;
+
+  if (target.type === "range")
+    displayPanels(rangeColumns.value, rangeGap.value);
+});
