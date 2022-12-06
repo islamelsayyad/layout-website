@@ -175,7 +175,7 @@ a {
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background-color: #e2e2e2;
+  /* background-color: #e2e2e2; */
 }
 
 .panel-item::after {

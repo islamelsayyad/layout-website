@@ -1,4 +1,5 @@
 // Generate Panels
+
 const panels = [];
 
 const panelSources = [
@@ -91,6 +92,7 @@ const displayPanels = function (columnsNum = 3, gap = 5) {
 };
 
 // Resizing Layout
+
 const rangeSliderBtn = document.querySelector(".range-slider_btn");
 const panelsWrapper = document.querySelector(".panels-wrapper");
 const rangeSliderLayout = document.querySelector(".range-slider_layout");
