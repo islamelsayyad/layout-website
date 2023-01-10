@@ -53,8 +53,9 @@ const createPanels = function (columnsNum, gap, columns) {
 
     const column = columns[`col${[i]}`];
     column.forEach((panel) => {
-      const panelItem = document.createElement("div");
+      const panelItem = document.createElement("a");
       panelItem.classList.add("panel__item__wrapper");
+      panelItem.setAttribute("href", panel.src);
       panelColItem.appendChild(panelItem);
 
       const panelImg = document.createElement("img");
@@ -96,7 +97,41 @@ const rangeColumns = document.querySelector(".range-slider__item__col");
 const rangeGap = document.querySelector(".range-slider__item__gap");
 const panelsWrapper = document.querySelector(".panels__container");
 
-displayPanels(rangeColumns.defaultValue, rangeGap.defaultValue);
+let previousScreenSize = window.innerWidth;
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 600 && previousScreenSize >= 600) {
+    rangeColumns.value = 1;
+  } else if (
+    window.innerWidth >= 500 &&
+    window.innerWidth < 800 &&
+    (previousScreenSize < 500 || previousScreenSize >= 800)
+  ) {
+    rangeColumns.value = 2;
+  } else if (
+    window.innerWidth >= 800 &&
+    window.innerWidth < 1000 &&
+    (previousScreenSize < 800 || previousScreenSize >= 1000)
+  ) {
+    rangeColumns.value = 3;
+  } else if (window.innerWidth >= 1000 && previousScreenSize < 1000) {
+    rangeColumns.value = 4;
+  }
+  previousScreenSize = window.innerWidth;
+  displayPanels(rangeColumns.value, rangeGap.value);
+});
+
+if (previousScreenSize < 500) {
+  rangeColumns.value = 1;
+} else if (previousScreenSize >= 500 && previousScreenSize < 800) {
+  rangeColumns.value = 2;
+} else if (previousScreenSize >= 800 && previousScreenSize < 1000) {
+  rangeColumns.value = 3;
+} else {
+  rangeColumns.value = 4;
+}
+
+displayPanels(rangeColumns.value, rangeGap.value);
 
 rangeSliderBtn.addEventListener("click", () => {
   rangeSliderLayout.classList.toggle("range-slider__wrapper--visible");
@@ -112,36 +147,3 @@ rangeSliderLayout.addEventListener("input", (e) => {
   if (target.type === "range")
     displayPanels(rangeColumns.value, rangeGap.value);
 });
-
-let previousScreenSize = window.innerWidth;
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth < 600 && previousScreenSize >= 600) {
-    displayPanels(1, rangeGap.value);
-  } else if (
-    window.innerWidth >= 500 &&
-    window.innerWidth < 800 &&
-    (previousScreenSize < 500 || previousScreenSize >= 800)
-  ) {
-    displayPanels(2, rangeGap.value);
-  } else if (
-    window.innerWidth >= 800 &&
-    window.innerWidth < 1000 &&
-    (previousScreenSize < 800 || previousScreenSize >= 1000)
-  ) {
-    displayPanels(3, rangeGap.value);
-  } else if (window.innerWidth >= 1000 && previousScreenSize < 1000) {
-    displayPanels(4, rangeGap.value);
-  }
-  previousScreenSize = window.innerWidth;
-});
-
-if (previousScreenSize < 500) {
-  displayPanels(1, rangeGap.value);
-} else if (previousScreenSize >= 500 && previousScreenSize < 800) {
-  displayPanels(2, rangeGap.value);
-} else if (previousScreenSize >= 800 && previousScreenSize < 1000) {
-  displayPanels(3, rangeGap.value);
-} else {
-  displayPanels(4, rangeGap.value);
-}

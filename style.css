@@ -11,6 +11,8 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #101010;
   color: #fff;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 ul {
@@ -109,6 +111,12 @@ a {
   font-size: 1.5rem;
 }
 
+@media (max-width: 600px) {
+  .range-slider__item label {
+    font-size: 1.25rem;
+  }
+}
+
 .range-slider__item input {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -117,6 +125,12 @@ a {
   height: 2px;
   outline: none;
   background-color: #fff;
+}
+
+@media (max-width: 600px) {
+  .range-slider__item input {
+    width: 10rem;
+  }
 }
 
 .range-slider__item input[type="range"]::-webkit-slider-thumb {
