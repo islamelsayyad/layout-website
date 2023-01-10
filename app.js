@@ -1,4 +1,3 @@
-// Generate Panels
 const panels = [];
 const panelSources = [
   "https://dr.savee-cdn.com/things/6/3/8a6e255d8005068392e62c.webp",
@@ -38,8 +37,6 @@ for (let i = 0; i <= panelNum; i++) {
     panelSrcIndex++;
   }
 }
-
-// Append Panels
 
 const panelsColumnsWrapper = document.querySelector(
   ".panels__container__columns__wrapper"
@@ -91,8 +88,6 @@ const displayPanels = function (columnsNum = 3, gap = 5) {
   createPanels(columnsNum, gap, columns);
 };
 
-// Resizing Layout
-
 const rangeSliderBtn = document.querySelector(".range-slider__btn");
 const rangeSliderLayout = document.querySelector(
   ".range-slider__wrapper__items"
@@ -117,3 +112,36 @@ rangeSliderLayout.addEventListener("input", (e) => {
   if (target.type === "range")
     displayPanels(rangeColumns.value, rangeGap.value);
 });
+
+let previousScreenSize = window.innerWidth;
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 600 && previousScreenSize >= 600) {
+    displayPanels(1, rangeGap.value);
+  } else if (
+    window.innerWidth >= 500 &&
+    window.innerWidth < 800 &&
+    (previousScreenSize < 500 || previousScreenSize >= 800)
+  ) {
+    displayPanels(2, rangeGap.value);
+  } else if (
+    window.innerWidth >= 800 &&
+    window.innerWidth < 1000 &&
+    (previousScreenSize < 800 || previousScreenSize >= 1000)
+  ) {
+    displayPanels(3, rangeGap.value);
+  } else if (window.innerWidth >= 1000 && previousScreenSize < 1000) {
+    displayPanels(4, rangeGap.value);
+  }
+  previousScreenSize = window.innerWidth;
+});
+
+if (previousScreenSize < 500) {
+  displayPanels(1, rangeGap.value);
+} else if (previousScreenSize >= 500 && previousScreenSize < 800) {
+  displayPanels(2, rangeGap.value);
+} else if (previousScreenSize >= 800 && previousScreenSize < 1000) {
+  displayPanels(3, rangeGap.value);
+} else {
+  displayPanels(4, rangeGap.value);
+}

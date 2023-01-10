@@ -5,49 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
     </style>
-
     <script defer src="app.js"></script>
-    <title>Layout.</title>
-    <link rel="icon" href="assets/logo/layout-98.png" />
+    <title>Layout</title>
   </head>
   <body>
-    <div class="main-container">
-      <nav class="navbar__wrapper">
-        <div class="navbar__logo">
-          <img src="assets/logo/layout-400.png" alt="layout-logo" />
+    <nav class="navbar__wrapper">
+      <div class="navbar__logo">
+        <img src="assets/logo/layout.png" alt="layout-logo" />
+      </div>
+      <div class="range-slider__btn">
+        <svg fill="currentColor" height="20" viewBox="0 0 33 20" width="33">
+          <g
+            clip-path="url(#clip0)"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            fill="#fff"
+          >
+            <path
+              d="M16.6667 5.83335C14.3655 5.83335 12.5 7.69883 12.5 10C12.5 12.3012 14.3655 14.1667 16.6667 14.1667C18.9679 14.1667 20.8334 12.3012 20.8334 10C20.8334 7.69883 18.9679 5.83335 16.6667 5.83335ZM10.8334 10C10.8334 6.77836 13.445 4.16669 16.6667 4.16669C19.8884 4.16669 22.5 6.77836 22.5 10C22.5 13.2217 19.8884 15.8334 16.6667 15.8334C13.445 15.8334 10.8334 13.2217 10.8334 10Z"
+            ></path>
+            <path
+              d="M33.3334 10.8334H20.8334V9.16669H33.3334V10.8334zM11.6667 10.8334H0V9.16669H11.6667V10.8334z"
+            ></path>
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <path fill="currentColor" d="M0 0H33V20H0z"></path>
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div class="range-slider__wrapper__items">
+        <div class="range-slider__item">
+          <label for="">Columns</label>
+          <input
+            class="range-slider__item__col"
+            type="range"
+            min="1"
+            max="9"
+            value="3"
+          />
         </div>
-        <div class="range-slider__btn">range</div>
-        <div class="range-slider__wrapper__items">
-          <div class="range-slider__item">
-            <label for="">Columns</label>
-            <input
-              class="range-slider__item__col"
-              type="range"
-              min="1"
-              max="9"
-              value="3"
-            />
-          </div>
 
-          <div class="range-slider__item">
-            <label for="">Gap</label>
-            <input
-              class="range-slider__item__gap"
-              type="range"
-              min="1"
-              max="9"
-              value="5"
-            />
-          </div>
+        <div class="range-slider__item">
+          <label for="">Gap</label>
+          <input
+            class="range-slider__item__gap"
+            type="range"
+            min="1"
+            max="9"
+            value="5"
+          />
         </div>
-      </nav>
-      <main class="panels__container">
-        <div class="panels__container__columns__wrapper"></div>
-      </main>
-    </div>
+      </div>
+    </nav>
+    <main class="panels__container">
+      <div class="panels__container__columns__wrapper"></div>
+    </main>
   </body>
 </html>
