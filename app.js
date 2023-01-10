@@ -1,7 +1,5 @@
 // Generate Panels
-
 const panels = [];
-
 const panelSources = [
   "https://dr.savee-cdn.com/things/6/3/8a6e255d8005068392e62c.webp",
   "https://dr.savee-cdn.com/things/6/3/862676e5053b9bb40e20b8.webp",
@@ -43,12 +41,14 @@ for (let i = 0; i <= panelNum; i++) {
 
 // Append Panels
 
-const panelsColumnsWrapper = document.querySelector(".panels_cols-wrapper");
+const panelsColumnsWrapper = document.querySelector(
+  ".panels__container__columns__wrapper"
+);
 
 const createPanels = function (columnsNum, gap, columns) {
   for (let i = 1; i <= columnsNum; i++) {
     const panelColItem = document.createElement("div");
-    panelColItem.classList.add("panel__col-item");
+    panelColItem.classList.add("panel__col-item__wrapper");
     panelColItem.dataset.key = i;
     panelsColumnsWrapper.appendChild(panelColItem);
 
@@ -57,7 +57,7 @@ const createPanels = function (columnsNum, gap, columns) {
     const column = columns[`col${[i]}`];
     column.forEach((panel) => {
       const panelItem = document.createElement("div");
-      panelItem.classList.add("panel-item");
+      panelItem.classList.add("panel__item__wrapper");
       panelColItem.appendChild(panelItem);
 
       const panelImg = document.createElement("img");
@@ -93,20 +93,22 @@ const displayPanels = function (columnsNum = 3, gap = 5) {
 
 // Resizing Layout
 
-const rangeSliderBtn = document.querySelector(".range-slider_btn");
-const panelsWrapper = document.querySelector(".panels-wrapper");
-const rangeSliderLayout = document.querySelector(".range-slider_layout");
-const rangeColumns = document.querySelector(".range-slider_cols");
-const rangeGap = document.querySelector(".range-slider_gap");
+const rangeSliderBtn = document.querySelector(".range-slider__btn");
+const rangeSliderLayout = document.querySelector(
+  ".range-slider__wrapper__items"
+);
+const rangeColumns = document.querySelector(".range-slider__item__col");
+const rangeGap = document.querySelector(".range-slider__item__gap");
+const panelsWrapper = document.querySelector(".panels__container");
 
 displayPanels(rangeColumns.defaultValue, rangeGap.defaultValue);
 
 rangeSliderBtn.addEventListener("click", () => {
-  rangeSliderLayout.classList.toggle("range-slider__visible");
+  rangeSliderLayout.classList.toggle("range-slider__wrapper--visible");
 });
 
 panelsWrapper.addEventListener("mousemove", () => {
-  rangeSliderLayout.classList.remove("range-slider__visible");
+  rangeSliderLayout.classList.remove("range-slider__wrapper--visible");
 });
 
 rangeSliderLayout.addEventListener("input", (e) => {

@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="style.css" />
 
     <style>
@@ -12,23 +11,21 @@
     </style>
 
     <script defer src="app.js"></script>
-
     <title>Layout.</title>
-
-    <link rel="icon" href="layout-98.png" />
+    <link rel="icon" href="assets/logo/layout-98.png" />
   </head>
   <body>
     <div class="main-container">
-      <nav class="nav-bar-wrapper">
-        <div class="nav-bar__logo">
-          <img src="layout-400.png" alt="layout-logo" />
+      <nav class="navbar__wrapper">
+        <div class="navbar__logo">
+          <img src="assets/logo/layout-400.png" alt="layout-logo" />
         </div>
-        <div class="range-slider_btn">range</div>
-        <div class="range-slider_layout">
-          <div class="range-slider-wrapper">
+        <div class="range-slider__btn">range</div>
+        <div class="range-slider__wrapper__items">
+          <div class="range-slider__item">
             <label for="">Columns</label>
             <input
-              class="range-slider_cols"
+              class="range-slider__item__col"
               type="range"
               min="1"
               max="9"
@@ -36,10 +33,10 @@
             />
           </div>
 
-          <div class="range-slider-wrapper">
+          <div class="range-slider__item">
             <label for="">Gap</label>
             <input
-              class="range-slider_gap"
+              class="range-slider__item__gap"
               type="range"
               min="1"
               max="9"
@@ -48,8 +45,8 @@
           </div>
         </div>
       </nav>
-      <main class="panels-wrapper">
-        <div class="panels_cols-wrapper"></div>
+      <main class="panels__container">
+        <div class="panels__container__columns__wrapper"></div>
       </main>
     </div>
   </body>
