@@ -165,6 +165,13 @@ a {
   transform: translate(-50%, 0);
   z-index: 10;
   padding: 0 3.5rem;
+  width: 100vw;
+}
+
+@media (max-width: 600px) {
+  .panels__container {
+    padding: 0 1.5rem;
+  }
 }
 
 .panels__container__columns__wrapper {
